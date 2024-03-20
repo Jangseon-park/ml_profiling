@@ -3,7 +3,7 @@ import torch
 from torch.profiler import ExecutionTraceObserver, profile
 
 def trace_hanelr(prof):
-    prof.export_chrome_trace("kineto_trace.json")
+    prof.export_chrome_trace("bert_kt.json")
 
 # GPU 사용 가능 여부 확인
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -22,7 +22,7 @@ tokens = {k: v.to(device) for k, v in tokens.items()}
 
 # 프로파일링을 위한 콜백 함수 정의
 et = ExecutionTraceObserver()
-et.register_callback("pytorch_et.json")
+et.register_callback("bert_et.json")
 with profile(
     activities=[
         torch.profiler.ProfilerActivity.CPU,
