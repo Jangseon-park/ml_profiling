@@ -2,7 +2,7 @@ from transformers import BertTokenizer, BertModel
 import torch
 from torch.profiler import ExecutionTraceObserver, profile
 
-def trace_hanelr(prof):
+def trace_handler(prof):
     prof.export_chrome_trace("bert_kt.json")
 
 # GPU 사용 가능 여부 확인
@@ -28,11 +28,12 @@ with profile(
         torch.profiler.ProfilerActivity.CPU,
         torch.profiler.ProfilerActivity.CUDA,
     ],
-    schedule=torch.profiler.schedule(wait=0, warmup=10, active=1),
-    on_trace_ready=trace_hanelr
+    schedule=torch.profiler.schedule(wait=0, warmup=1, active=1),
+    on_trace_ready=trace_handler
 ) as prof:
     # 특징 추출
     et.start()
+    prof.step()
     with torch.no_grad():
         outputs = model(**tokens)
         last_hidden_states = outputs.last_hidden_state
