@@ -4,7 +4,9 @@ from torchvision import datasets, transforms
 from torch.profiler import profile, record_function, ProfilerActivity, ExecutionTraceObserver
 import torch.multiprocessing as mp
 import torch.nn.functional as F
+import torch.nn as nn
 import os
+import
 
 
 def trace_handler(prof):
@@ -86,6 +88,8 @@ def train(rank, world_size):
 
 
 def main():
+    os.environ['MASTER_ADDR'] = 'localhost'  # 마스터 노드의 IP 주소
+    os.environ['MASTER_PORT'] = '12355'      # 통신에 사용할 포트 번호
     world_size = 2
     mp.spawn(train,
              args=(world_size,),
