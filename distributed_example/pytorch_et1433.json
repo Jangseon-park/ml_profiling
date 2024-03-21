@@ -1,0 +1,12 @@
+{
+  "schema": "1.0.2-chakra.0.0.4", "pid": 1433, "time": "2024-03-21 05:19:35", "start_ts": 179294625,
+  "nodes": [
+    {
+      "id": 1, "name": "[pytorch|profiler|execution_trace|process]", "ctrl_deps": 1,
+      "inputs": {"values": [], "shapes": [], "types": []},
+      "outputs": {"values": [], "shapes": [], "types": []},
+      "attrs": [{"name": "rf_id", "type": "uint64", "value": 0}, {"name": "fw_parent", "type": "uint64", "value": 0}, {"name": "seq_id", "type": "int64", "value": -1}, {"name": "scope", "type": "uint64", "value": 7}, {"name": "tid", "type": "uint64", "value": 0}, {"name": "fw_tid", "type": "uint64", "value": 0}, {"name": "op_schema", "type": "string", "value": ""}]
+    }
+  ],
+  "finish_ts": 179294627
+}
