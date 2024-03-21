@@ -1,13 +1,13 @@
-import torch.distributed as dist
-from torch.utils.data import DataLoader, DistributedSampler
-from torchvision import datasets, transforms
-from torch.profiler import profile, ProfilerActivity, ExecutionTraceObserver
-import torch.multiprocessing as mp
-import torch.nn.functional as F
-import torch.nn as nn
 import os
+import torch
+import torch.nn as nn
 import torch.optim as optim
-
+import torch.nn.functional as F
+import torch.distributed as dist
+import torch.multiprocessing as mp
+from torch.utils.data import DataLoader, DistributedSampler
+from torch.profiler import profile, ProfilerActivity, ExecutionTraceObserver
+from torchvision import datasets, transforms
 
 def trace_handler(prof):
     pid = os.getpid()
